@@ -6,17 +6,17 @@ import java.sql.SQLException;
 
 public class DBConTest {
 
-   public static Connection getCon() {
-      String url = "jdbc:mariadb://localhost:3306/iot2";
-      String user = "root";
-      String password = "akwcnjqhktlqkf1";
-      Connection con = null;
-      try {
-         Class.forName("org.mariadb.jdbc.Driver");
-         con = DriverManager.getConnection(url, user, password);
-      } catch (ClassNotFoundException | SQLException e) {
-         e.printStackTrace();
-      }
-      return con;
-   }
+	public static Connection getCon() {
+		String url = "jdbc:mariadb://localhost:3306/iot2";
+		String user = "root";
+		String password = "r1r2r3";
+		Connection con = null;
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			con = DriverManager.getConnection(url, user, password);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return con;
+	}
 }

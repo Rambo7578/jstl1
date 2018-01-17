@@ -6,13 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUtil {
-	
-	public static void closeAll(ResultSet rs, Connection con, PreparedStatement ps) {
+	public static void closeAll(ResultSet rs, PreparedStatement ps,Connection con) {
 		DBUtil.close(rs);
-		DBUtil.close(con);
 		DBUtil.close(ps);
+		DBUtil.close(con);
 	}
-	
 	public static void close(ResultSet rs) {
 		try {
 			if(rs!=null) {
@@ -22,6 +20,7 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void close(Connection con) {
 		try {
 			if(con!=null) {
@@ -31,12 +30,12 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
+	
 	public static void close(PreparedStatement ps) {
 		try {
 			if(ps!=null) {
 				ps.close();
 			}
-			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

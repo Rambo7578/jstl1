@@ -41,7 +41,8 @@ public class ClassDAOImpl implements ClassDAO {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			DBUtil.closeAll(rs, con, ps);
+			
+			DBUtil.closeAll(rs,ps,con);
 		}
 		return classList;
 	}

@@ -13,4 +13,5 @@ public class MenuServiceImpl implements MenuService {
 	public void setMenuList(HttpServletRequest req) {
 		req.setAttribute("menuList", mdao.selectMenuList());
 	}
+
 }

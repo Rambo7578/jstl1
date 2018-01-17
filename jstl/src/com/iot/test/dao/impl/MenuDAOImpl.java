@@ -12,7 +12,7 @@ import com.iot.test.dao.MenuDAO;
 import com.iot.test.test.DBConTest;
 import com.iot.test.vo.Menu;
 
-public class MenuDAOImpl implements MenuDAO {
+public class MenuDAOImpl implements MenuDAO{
 
 	@Override
 	public List<Menu> selectMenuList() {
@@ -20,7 +20,7 @@ public class MenuDAOImpl implements MenuDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select * from menu order by mnum";
+		String sql = "select * from menu order by mNum";
 		con = DBCon.getCon();
 		//con = DBConTest.getCon();
 		try {

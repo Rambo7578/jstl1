@@ -19,18 +19,24 @@ public class UserDAOImpl implements UserDAO {
 		List<UserInfo> userList = new ArrayList<UserInfo>();
 		String sql = "select * from user_info where 1=1";
 		if(ui!=null) {
-			sql += " and uiname like ?";
+			sql += " and ";
+			sql += ui.getSearchType();
+			sql += " like ?";
 		}
 		Connection con = null;
 		PreparedStatement ps = null;
-		//같은 sql을 실행해야할때 미리 준비 한번 파싱(메모리에 올려놩) 바인딩 열번
-		//자동으로 ''이게 찍힘.. sql인젝션 방지~~
 		ResultSet rs = null;
 		try {
 			con = DBCon.getCon();
 			ps = con.prepareStatement(sql);
 			if(ui!=null) {
-				ps.setString(1, "%" + ui.getUiName() + "%");
+				String searchStr = ui.getUiName();
+				if(ui.getSearchType().equals("uiAge")) {
+					searchStr = ""+ui.getUiAge();
+				}else if(ui.getSearchType().equals("address")) {
+					searchStr = ui.getAddress();
+				}
+				ps.setString(1, "%" + searchStr + "%");
 			}
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -42,11 +48,10 @@ public class UserDAOImpl implements UserDAO {
 				ui2.setUiRegdate(rs.getString("uiregdate"));
 				userList.add(ui2);
 			}
-			//여기에 return userList은 안 쓴 이유는 에러가 나도 실행되게 하려고
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
-			DBUtil.closeAll(rs, con, ps);
+			DBUtil.closeAll(rs,ps,con);
 		}
 		return userList;
 	}

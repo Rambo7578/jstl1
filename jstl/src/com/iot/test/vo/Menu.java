@@ -5,7 +5,6 @@ public class Menu {
 	private String mName;
 	private String mUrl;
 	private String mDesc;
-	
 	public int getmNum() {
 		return mNum;
 	}
@@ -34,4 +33,5 @@ public class Menu {
 	public String toString() {
 		return "Menu [mNum=" + mNum + ", mName=" + mName + ", mUrl=" + mUrl + ", mDesc=" + mDesc + "]";
 	}
+	
 }

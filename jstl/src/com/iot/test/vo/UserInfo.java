@@ -1,7 +1,6 @@
 package com.iot.test.vo;
 
 public class UserInfo {
-
 	private int uiNo;
 	private String uiName;
 	private int uiAge;
@@ -10,7 +9,14 @@ public class UserInfo {
 	private int ciNo;
 	private String uiRegdate;
 	private String address;
+	private String searchType;
 	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
 	public int getUiNo() {
 		return uiNo;
 	}
@@ -59,10 +65,14 @@ public class UserInfo {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
 	@Override
 	public String toString() {
 		return "UserInfo [uiNo=" + uiNo + ", uiName=" + uiName + ", uiAge=" + uiAge + ", uiId=" + uiId + ", uiPwd="
 				+ uiPwd + ", ciNo=" + ciNo + ", uiRegdate=" + uiRegdate + ", address=" + address + "]";
+	}
+	
+	public static void main(String[] args) {
+		String str = "1";
+		String t = str.equals("1")? "abc":"tt";
 	}
 }
