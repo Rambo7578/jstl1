@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.iot.test.common.DBCon;
+import com.iot.test.common.DBUtil;
 import com.iot.test.dao.MenuDAO;
 import com.iot.test.test.DBConTest;
 import com.iot.test.vo.Menu;
@@ -36,6 +37,8 @@ public class MenuDAOImpl implements MenuDAO{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			DBUtil.closeAll(rs,ps,con);
 		}
 		return menuList;
 	}

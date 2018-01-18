@@ -12,12 +12,12 @@ import com.iot.test.service.CustomerService;
 public class CustomerServiceImpl implements CustomerService {
 	private CustomerDAO cdao=new CustomerDAOImpl();
 	
-	
 	@Override
 	public void setCustomerList(HttpServletRequest req) {
+		String taget="customerid asc,customername asc,city asc,country asc";
 		
 		
-	
+		
 		req.setAttribute("customerList",cdao.selectCustomerList(req.getParameter("order")));
 		
 		

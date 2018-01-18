@@ -16,11 +16,15 @@
 	고객리스트
 	<table border="1" cellspacing="0" cellpadding="0">
 		<tr>
-			<th><a href="${root}/view/customer/list?order=customerid">CustomerID</a></th>
-			<th><a href="${root}/view/customer/list?order=customername">CustomerName</a></th>
-			<th><a href="${root}/view/customer/list?order=city">City</a></th>
-			<th><a href="${root}/view/customer/list?order=country">Country</a></th>
+			<th><a href="${root}/view/customer/list?taget=customerid">CustomerID</a></th>
+			<th><a href="${root}/view/customer/list?taget=customername">CustomerName</a></th>
+			<th><a href="${root}/view/customer/list?taget=city">City</a></th>
+			<th><a href="${root}/view/customer/list?taget=country">Country</a></th>
+			
 		</tr>
+		<input type="submit" value="삭제" onclick="">
+		<input type="submit" value="수정" onclick="">
+		
 		<c:if test="${customerList eq null}">
 			<tr>
 				<td colspan="4" align="center">고객리스트 없음</td>
@@ -32,7 +36,9 @@
 				<td>${customer.customerName}</td>
 				<td>${customer.city}</td>
 				<td>${customer.country}</td>
+				
 			</tr>
+			
 		</c:forEach>
 
 	</table>

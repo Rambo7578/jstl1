@@ -26,6 +26,7 @@ public class ClassDAOImpl implements ClassDAO {
 		ResultSet rs = null;
 		try {
 			con = DBCon.getCon();
+			System.out.println(con);
 			ps = con.prepareStatement(sql);
 			if(ci!=null) {
 				ps.setString(1, "%" + ci.getCiName() + "%");

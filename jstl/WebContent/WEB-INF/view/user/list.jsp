@@ -7,11 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>Insert title here</title>
 </head>
+
 <body>
 유저리스트<br>
-sdfsdfs
+
 <script>
 function getEl(id){
 	return document.getElementById(id);
@@ -43,7 +45,7 @@ function checkValue(){
 	<input type="text" name="searchStr" id="searchStr" value="${param.searchStr}">
 	<input type="submit" value="검색">
 </form>
-<table border="1">
+<table border="1" >
 	<tr>
 		<th>이름</th>
 		<th>아이디</th>
