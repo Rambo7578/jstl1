@@ -23,7 +23,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 		String sql = "select*from customer";
 		
 		
-		
 		try {
 			con = DBCon.getCon();
 			if(orderStr!=null) {

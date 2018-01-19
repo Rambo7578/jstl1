@@ -16,11 +16,10 @@
 	고객리스트
 	<table border="1" cellspacing="0" cellpadding="0">
 		<tr>
-			<th><a href="${root}/view/customer/list?taget=customerid">CustomerID</a></th>
-			<th><a href="${root}/view/customer/list?taget=customername">CustomerName</a></th>
-			<th><a href="${root}/view/customer/list?taget=city">City</a></th>
-			<th><a href="${root}/view/customer/list?taget=country">Country</a></th>
-			
+			<th><a href="${root}/view/customer/list?target=customerid&order=${orderStr}">CustomerID</a></th>
+			<th><a href="${root}/view/customer/list?target=customername&order=${orderStr}">CustomerName</a></th>
+			<th><a href="${root}/view/customer/list?target=city&order=${orderStr}">City</a></th>
+			<th><a href="${root}/view/customer/list?target=country&order=${orderStr}">Country</a></th>
 		</tr>
 		<input type="submit" value="삭제" onclick="">
 		<input type="submit" value="수정" onclick="">
