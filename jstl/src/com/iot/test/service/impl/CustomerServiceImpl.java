@@ -8,35 +8,30 @@ import com.iot.test.service.CustomerService;
 
 public class CustomerServiceImpl implements CustomerService {
 	private CustomerDAO cdao = new CustomerDAOImpl();
-
 	@Override
 	public void setCustomerList(HttpServletRequest req) {
-		String orderStr = "customerid asc, customername asc, city asc, country asc";
 		String target = req.getParameter("target");
-		if (req.getParameter("orderStr") != null) {
+		String orderStr = "customerid asc, customername asc,city asc,country asc";
+		
+		if(req.getParameter("orderStr")!=null) {
 			orderStr = req.getParameter("orderStr");
 			int fIdx = orderStr.indexOf(target);
-			String orderTarget = orderStr.substring(fIdx);
-			int lIdx = orderTarget.indexOf(",");
-			if (lIdx != -1) {
-				orderTarget = orderTarget.substring(0, lIdx + 1);
-				orderStr = orderStr.replace(orderTarget, "");
-
-			} else {
-				orderStr = orderStr.replace("," + orderTarget, "");
-				orderTarget = orderTarget + ",";
+			String targetStr = orderStr.substring(fIdx);
+			int lIdx = targetStr.indexOf(",");
+			String orderType = targetStr.substring(0);
+			if(lIdx!=-1) {
+				orderType = targetStr.substring(0,lIdx);
 			}
-
-			if (orderTarget.indexOf("asc") != -1) {
-				orderTarget = orderTarget.replace("asc", "desc");
-			} else {
-				orderTarget = orderTarget.replace("desc", "asc");
+			orderStr = orderStr.replace(orderType + ",", "");
+			if(orderType.trim().equals(target + " asc")) {
+				orderType = " desc,";
+			}else {
+				orderType = " asc,";
 			}
-			orderStr = orderTarget + orderStr;
+			orderStr = target + orderType + orderStr;
 		}
-
-		req.setAttribute("customerList", cdao.selectCustomerList(req.getParameter("target")));
-
+		req.setAttribute("orderStr", orderStr);
+		req.setAttribute("customerList",cdao.selectCustomerList(orderStr));
 	}
 
 }

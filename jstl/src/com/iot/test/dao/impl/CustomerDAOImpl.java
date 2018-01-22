@@ -25,11 +25,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 		try {
 			con = DBCon.getCon();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
 			if(orderStr!=null) {
 				sql+=" order by "+orderStr;
 			}
-			ps = con.prepareStatement(sql);
-			rs = ps.executeQuery();
 			while (rs.next()) {
 				Customer c = new Customer();
 				c.setCustomerID(rs.getInt("customerID"));

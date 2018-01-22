@@ -7,13 +7,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
+
 import com.iot.test.common.DBCon;
 import com.iot.test.common.DBUtil;
+import com.iot.test.common.MybatisSessionFactory;
 import com.iot.test.dao.UserDAO;
 import com.iot.test.vo.UserInfo;
 
 public class UserDAOImpl implements UserDAO {
 
+	public static Logger log=Logger.getLogger(UserDAOImpl.class);
 	@Override
 	public List<UserInfo> selectUserList(UserInfo ui) {
 		List<UserInfo> userList = new ArrayList<UserInfo>();
@@ -58,7 +64,16 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public UserInfo selectUser(UserInfo ui) {
-		// TODO Auto-generated method stub
+		try {
+			log.info("유저보기DAO시작");
+			SqlSessionFactory ssf=MybatisSessionFactory.getSqlSessionFactory();
+			SqlSession ss=ssf.openSession();
+			UserInfo rUi=ss.selectOne("user.selectUser",ui);
+			log.info("유저보기 종료");
+			return rUi;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
